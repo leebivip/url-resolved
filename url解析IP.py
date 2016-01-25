@@ -2,14 +2,20 @@
 #-*-coding:utf-8-*-
 __author__ = 'IOT'
 import socket
+import re
 def getip (url):
     try:
         ip = socket.gethostbyname(url)
+        part = re.findall(r'.*\.',ip,re.S)
+        Section = part+'0/24'
         ok = open('ok.txt','a+')
         IP = open('IP.txt','a+')
+        Se = open('IP_Section.txt','a+')
         ok.writelines(ip + '\n')
         IP.writelines(line+' '+ip+'\n')
+        Se.writelines(Section + '\n')
         print (line + ' >> '+ ip)
+        print (ip + ' >> '+ Section)
     except:
         wrong = open ('fail.txt','a+')
         wrong.writelines(url + '\n')
