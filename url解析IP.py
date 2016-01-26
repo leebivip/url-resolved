@@ -7,7 +7,7 @@ def getip (url):
     try:
         ip = socket.gethostbyname(url)
         part = re.findall(r'.*\.',ip,re.S)
-        Section = part+'0/24'
+        Section = part[0]+'0/24'
         ok = open('ok.txt','a+')
         IP = open('IP.txt','a+')
         Se = open('IP_Section.txt','a+')
